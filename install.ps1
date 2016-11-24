@@ -28,10 +28,12 @@ Expand-Archive -LiteralPath $zipFile -DestinationPath $installDir
 Remove-Item -LiteralPath $zipFile
 
 # set PATH
+$binPath = Join-Path $installDir "bin"
+
 $environmentPath = (Get-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment").Path
 
-if (-Not $environmentPath.ToLower().Contains($path.ToLower())) {
-	$environmentPath = "$environmentPath;$path"
+if (-Not $environmentPath.ToLower().Contains($binPath.ToLower())) {
+	$environmentPath = "$environmentPath;$binPath"
 }
 
 setx /m PATH $environmentPath
