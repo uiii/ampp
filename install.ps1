@@ -13,19 +13,27 @@ if ((Test-Path $installDir) -And -Not $force.IsPresent) {
 $tmpFile = New-TemporaryFile
 
 $zipFile = $tmpFile.FullName + '.zip'
+$extractDir = $tmpFile.FullName + ".extract"
 
 # download zip
 $tmpFile.MoveTo($zipFile)
 Invoke-WebRequest -Uri $url -OutFile $zipFile
 
+# extract
+Expand-Archive -LiteralPath $zipFile -DestinationPath $extractDir
+
 # create install directory
 New-Item -ItemType Directory -Force $installDir
 
-# extract
-Expand-Archive -LiteralPath $zipFile -DestinationPath $installDir
+$items = Get-ChildItem -Path (Join-Path $extractDir "ampp-master\*")
+
+foreach ($item in $items) {
+	Copy-Item -LiteralPath $item -Destination $installDir -Recurse
+}
 
 # clean
 Remove-Item -LiteralPath $zipFile
+Remove-Item -LiteralPath $extractDir
 
 # set PATH
 $binPath = Join-Path $installDir "bin"
