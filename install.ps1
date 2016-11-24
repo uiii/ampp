@@ -10,6 +10,7 @@ if ((Test-Path $installDir) -And -Not $force.IsPresent) {
 	return
 }
 
+# prepare tmp file
 $tmpFile = New-TemporaryFile
 
 $zipFile = $tmpFile.FullName + '.zip'
