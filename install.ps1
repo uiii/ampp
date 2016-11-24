@@ -34,7 +34,7 @@ foreach ($item in $items) {
 
 # clean
 Remove-Item -LiteralPath $zipFile
-Remove-Item -LiteralPath $extractDir
+Remove-Item -LiteralPath $extractDir -Recurse
 
 # set PATH
 $binPath = Join-Path $installDir "bin"

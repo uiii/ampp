@@ -6,7 +6,7 @@ function Start-Ampp
 	$mysqlPort = $port + 1
 
 	if (-Not (Test-Path $amppDir)) {
-		(Get-Location) + ": There is no AMPP project in this directory"
+		"$(Get-Location): There is no AMPP project in this directory"
 		return
 	}
 
