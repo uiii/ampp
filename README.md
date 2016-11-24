@@ -16,7 +16,7 @@ Download [install.ps1](https://cdn.rawgit.com/uiii/ampp/master/install.ps1) scri
 
 Or run this command in `Cmd.exe` (run as Administrator):
 ```
-powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://github.com/uiii/ampp/install.ps1'))"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://cdn.rawgit.com/uiii/ampp/master/install.ps1'))"
 ```
 
 ## Usage
