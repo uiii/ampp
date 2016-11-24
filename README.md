@@ -28,6 +28,12 @@ powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.
 2. write code ...
 3. run AMPP
 	```
+	cd <directory>
 	ampp
 	```
 4. visit `localhost:8000`
+
+## Command line options
+
+`-create <directory>`: Create a project directory with specified name and initialize AMPP project inside  
+`-port <port>`: Run Apache on specified port, MariaDB will run on the port increased by 1
