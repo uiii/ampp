@@ -1,7 +1,7 @@
-# AMPP (**A**pache, **M**ariaDB, **P**HP per **P**roject)
+# AMPP 
 
-Windows utility to configure and run Apache (with PHP), MySQL/MariaDB instances per each project.
-So you have configuration files in the project directory and run stand alone servers only when developing (like Meteor).
+AMPP (**A**pache, **M**ariaDB, **P**HP per **P**roject) is Windows utility to configure and run Apache (with PHP), MySQL/MariaDB instances per each project.
+So you have configuration files in the project directory and run stand-alone servers only when developing (like Meteor).
 
 ## Requirements
 - Apache 2.4 in `C:\Apache24`
@@ -12,11 +12,11 @@ So you have configuration files in the project directory and run stand alone ser
 
 ## Installation
 
-Download [install.ps1](https://raw.githubusercontent.com/uiii/ampp/master/install.ps1) script and run in the PowerShell.
+Download [install.ps1](https://cdn.rawgit.com/uiii/ampp/master/install.ps1) script and run in the PowerShell.
 
 Or run this command in `Cmd.exe` (run as Administrator):
 ```
-powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://github.com/uiii/ampp/install.ps1'))"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://cdn.rawgit.com/uiii/ampp/master/install.ps1'))"
 ```
 
 ## Usage
