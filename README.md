@@ -1,7 +1,7 @@
 # AMPP 
 
 AMPP (**A**pache, **M**ariaDB, **P**HP per **P**roject) is Windows utility to configure and run Apache (with PHP), MySQL/MariaDB instances per each project.
-So you have configuration files in the project directory and run stand alone servers only when developing (like Meteor).
+So you have configuration files in the project directory and run stand-alone servers only when developing (like Meteor).
 
 ## Requirements
 - Apache 2.4 in `C:\Apache24`
