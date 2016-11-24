@@ -12,7 +12,7 @@ So you have configuration files in the project directory and run stand-alone ser
 
 ## Installation
 
-Download [install.ps1](https://cdn.rawgit.com/uiii/ampp/master/install.ps1) script and run in the PowerShell.
+Download [install.ps1](https://github.com/uiii/ampp/blob/master/install.ps1) script and run in the PowerShell.
 
 Or run this command in `Cmd.exe` (run as Administrator):
 ```
