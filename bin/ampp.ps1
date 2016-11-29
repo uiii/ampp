@@ -5,7 +5,9 @@ param(
 	[switch] $init,
 
 	[Parameter(Mandatory=$false)]
-	[int] $port = 8000
+	[int] $port = 8000,
+
+	[switch] $version
 )
 
 . $PSScriptRoot\..\functions\new.ps1
@@ -15,6 +17,8 @@ if ($create) {
 	New-Ampp -Name $create
 } elseif ($init.IsPresent) {
 	Initialize-Lamp (Get-Location)
+} elseif ($version.IsPresent) {
+	(Get-Content $PSScriptRoot\..\.version).Split("@")[1]
 } else {
 	Start-Ampp -Port $port
 }
