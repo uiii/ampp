@@ -1,13 +1,36 @@
 param(
-	[string] $installDir = "C:\Program Files\ampp",
-	[switch] $force
+	[string] $installDir = "C:\Program Files\ampp"
 )
 
 $url = "https://github.com/uiii/ampp/archive/master.zip"
+$versionUrl = "https://raw.githubusercontent.com/uiii/ampp/master/.version"
 
-if ((Test-Path $installDir) -And -Not $force.IsPresent) {
-	$installDir + ": Install dir is not empty, AMPP is probably installed, skipping (use -Force to overwrite it)."
-	return
+if (Test-Path $installDir) {
+	$versionFile = Join-Path $installDir ".version"
+
+	try {
+		if (-Not (Test-Path -PathType Leaf $versionFile)) {
+			throw "Not-AMPP"
+		}
+
+		$project, [version] $installedVersion = (Get-Content ($versionFile)).Split("@")
+		$null, [version] $latestVersion = (New-Object System.Net.WebClient).DownloadString($versionUrl).Split("@")
+
+		if ($project -ne "ampp") {
+			throw "Not-AMPP"
+		}
+
+		if ($installedVersion -ge $latestVersion) {
+			"Latest version of AMPP@$($installedVersion.ToString()) is already installed."
+			return
+		}
+	} catch {
+		if ($_.FullyQualifiedErrorId -eq "Not-AMPP") {
+			throw $installDir + ": Install dir is not empty and doesn't contain AMPP project."
+		}
+
+		throw $_
+	}
 }
 
 # prepare tmp file
@@ -24,6 +47,7 @@ Invoke-WebRequest -Uri $url -OutFile $zipFile
 Expand-Archive -LiteralPath $zipFile -DestinationPath $extractDir
 
 # create install directory
+Remove-Item -LiteralPath $installDir -Recurse -Force -ErrorAction Ignore
 New-Item -ItemType Directory -Force $installDir
 
 $items = Get-ChildItem -Path (Join-Path $extractDir "ampp-master\*")
