@@ -2,6 +2,8 @@ param(
 	[Parameter(Mandatory=$false)]
 	[string] $create,
 
+	[switch] $init,
+
 	[Parameter(Mandatory=$false)]
 	[int] $port = 8000
 )
@@ -11,6 +13,8 @@ param(
 
 if ($create) {
 	New-Ampp -Name $create
+} elseif ($init.IsPresent) {
+	Initialize-Lamp (Get-Location)
 } else {
 	Start-Ampp -Port $port
 }

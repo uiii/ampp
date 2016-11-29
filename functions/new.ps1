@@ -7,14 +7,34 @@ function New-Ampp
 	)
 
 	$projectDir = Join-Path (Get-Location) $name
-	$projectAmppDir = Join-Path $projectDir ".ampp"
 
 	if (Test-Path $projectDir) {
-		$projectDir + ": the path is not empty"
+		$projectDir + ": Directory already exists"
 		return
 	}
 
 	New-Item -ItemType Directory -Path $projectDir
+
+	Initialize-Lamp $projectDir
+
+	# setup project inital files
+	Copy-Item -Path (Join-Path $filesDir "index.php") -Destination $projectDir
+}
+
+function Initialize-Lamp
+{
+	param(
+		[string] $projectDir
+	)
+
+	# create AMPP directory
+	$projectAmppDir = Join-Path $projectDir ".ampp"
+
+	if (Test-Path $projectAmppDir) {
+		$projectAmppDir + ": AMPP already initialized"
+		return
+	}
+
 	New-Item -ItemType Directory -Path $projectAmppDir
 
 	# setup Apache & PHP
@@ -47,9 +67,6 @@ function New-Ampp
 
 	# setup .gitignore
 	Copy-Item -Path (Join-Path $filesDir "gitignore") -Destination (Join-Path $projectAmppDir ".gitignore")
-
-	# setup project inital files
-	Copy-Item -Path (Join-Path $filesDir "index.php") -Destination $projectDir
 }
 
 function Expand-Conf
