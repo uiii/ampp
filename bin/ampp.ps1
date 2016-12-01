@@ -16,7 +16,7 @@ param(
 if ($create) {
 	New-Ampp -Name $create
 } elseif ($init.IsPresent) {
-	Initialize-Lamp (Get-Location)
+	Initialize-Ampp (Get-Location)
 } elseif ($version.IsPresent) {
 	(Get-Content $PSScriptRoot\..\.version).Split("@")[1]
 } else {

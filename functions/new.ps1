@@ -1,4 +1,4 @@
-$filesDir = (Join-Path $PSScriptRoot "../files")
+$filesDir = (Join-Path $PSScriptRoot "../default")
 
 function New-Ampp
 {
@@ -15,13 +15,13 @@ function New-Ampp
 
 	New-Item -ItemType Directory -Path $projectDir
 
-	Initialize-Lamp $projectDir
+	Initialize-Ampp $projectDir
 
 	# setup project inital files
 	Copy-Item -Path (Join-Path $filesDir "index.php") -Destination $projectDir
 }
 
-function Initialize-Lamp
+function Initialize-Ampp
 {
 	param(
 		[string] $projectDir
@@ -48,9 +48,9 @@ function Initialize-Lamp
 	$AMPP_PHP_ROOT = $amppPHPDir
 	$DOCUMENT_ROOT = $projectDir
 
-	Expand-Conf -Path (Join-Path $filesDir "httpd.conf") -Destination (Join-Path $amppApacheDir "httpd.conf")
-	Expand-Conf -Path (Join-Path $filesDir "mod_php.conf") -Destination (Join-Path $amppApacheDir "mod_php.conf")
-	Copy-Item -Path (Join-Path $filesDir "php56.ini") -Destination (Join-Path $amppPHPDir "php.ini")
+	Expand-Conf -Path (Join-Path $filesDir "apache\httpd.conf") -Destination (Join-Path $amppApacheDir "httpd.conf")
+	Expand-Conf -Path (Join-Path $filesDir "apache\mod_php.conf") -Destination (Join-Path $amppApacheDir "mod_php.conf")
+	Copy-Item -Path (Join-Path $filesDir "php\php56.ini") -Destination (Join-Path $amppPHPDir "php.ini")
 
 	# setup MySQL
 	$amppMysqlDir = (Join-Path $projectAmppDir "mariadb")
@@ -61,7 +61,7 @@ function Initialize-Lamp
 
 	$AMPP_MYSQL_ROOT = $amppMysqlDir.Replace("\", "/")
 
-	Expand-Conf -Path (Join-Path $filesDir "mariadb.ini") -Destination (Join-Path $amppMysqlDir "my.ini")
+	Expand-Conf -Path (Join-Path $filesDir "mariadb\mariadb.ini") -Destination (Join-Path $amppMysqlDir "my.ini")
 
 	mysql_install_db --datadir=$amppMysqlDataDir
 

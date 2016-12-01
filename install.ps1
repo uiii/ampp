@@ -1,5 +1,5 @@
 param(
-	[string] $installDir = "C:\Program Files\ampp"
+	[string] $installDir = (Join-Path $env:LOCALAPPDATA "ampp")
 )
 
 $url = "https://github.com/uiii/ampp/archive/master.zip"
