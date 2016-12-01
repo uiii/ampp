@@ -60,13 +60,13 @@ foreach ($item in $items) {
 Remove-Item -LiteralPath $zipFile
 Remove-Item -LiteralPath $extractDir -Recurse
 
-# set PATH
+# set user PATH
 $binPath = Join-Path $installDir "bin"
 
-$environmentPath = (Get-ItemProperty -Path Registry::"HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Environment").Path
+$environmentPath = (Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Environment").Path
 
 if (-Not $environmentPath.ToLower().Contains($binPath.ToLower())) {
 	$environmentPath = "$environmentPath;$binPath"
 }
 
-setx /m PATH $environmentPath
+setx PATH $environmentPath
