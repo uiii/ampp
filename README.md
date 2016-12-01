@@ -12,7 +12,7 @@ So you have configuration files in the project directory and run stand-alone ser
 
 ## Installation
 
-> AMPP is installed only for the current user in the `%LOCALAPPDATA%\ampp` directory
+> AMPP is installed only for the **current user** in the `%LOCALAPPDATA%\ampp` directory
 
 Download [install.ps1](https://github.com/uiii/ampp/blob/master/install.ps1) script and run it in the PowerShell.
 
