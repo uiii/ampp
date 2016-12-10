@@ -1,6 +1,8 @@
 function Start-Ampp
 {
-	[int] $port = 8000
+	param(
+		[int] $port = 8000
+	)
 
 	$amppDir = Join-Path (Get-Location) ".ampp"
 	$mysqlPort = $port + 1
