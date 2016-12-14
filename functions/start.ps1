@@ -14,6 +14,14 @@ function Start-Ampp
 
 	$apacheConfPath = Join-Path $amppDir "apache\httpd.conf"
 	$mysqlConf = Join-Path $amppDir "mariadb\my.ini"
+	$mysqlData = Join-Path $amppDir "mariadb\data"
+
+
+	if (-Not (Test-Path $mysqlData) -Or -Not (Get-ChildItem $mysqlData | Measure-Object).count) {
+		"Initializing MariaDB data"
+		mysql_install_db --datadir=$mysqlData | Out-Null
+		""
+	}
 
 	"Starting MariaDB database on port $mysqlPort"
 	Start-Process mysqld -ArgumentList "--defaults-file=$mysqlConf","--port=$mysqlPort" -WindowStyle Hidden

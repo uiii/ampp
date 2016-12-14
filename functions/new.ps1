@@ -63,8 +63,6 @@ function Initialize-Ampp
 
 	Expand-Conf -Path (Join-Path $filesDir "mariadb\mariadb.ini") -Destination (Join-Path $amppMysqlDir "my.ini")
 
-	mysql_install_db --datadir=$amppMysqlDataDir
-
 	# setup .gitignore
 	Copy-Item -Path (Join-Path $filesDir "gitignore") -Destination (Join-Path $projectAmppDir ".gitignore")
 }
