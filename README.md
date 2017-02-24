@@ -35,11 +35,13 @@ php7|C:\tools\php71
 ## Usage
 
 1. Create project directory:
+	
 	```
 	ampp -create <directory>
 	```
 2. write code ...
 3. run AMPP
+
 	```
 	cd <directory>
 	ampp
@@ -48,12 +50,12 @@ php7|C:\tools\php71
 
 ## Command line options
 
-`-start`: Start AMPP in the current directory
-`-init`: Initialize AMPP project in the current directory
-`-create`: Create a project directory with name specified by `-name` parameter and initialize AMPP project inside
-`-name <name>`: Used with `-create` option
-`-port <port>`: Run Apache on specified port, MariaDB will run on the port increased by 1
-`-phpVersion <version>`: Use specific PHP version (available: 5, 7)
+- `-start`: Start AMPP in the current directory
+- `-init`: Initialize AMPP project in the current directory
+- `-create`: Create a project directory with name specified by `-name` parameter and initialize AMPP project inside
+- `-name <name>`: Used with `-create` option
+- `-port <port>`: Run Apache on specified port, MariaDB will run on the port increased by 1
+- `-phpVersion <version>`: Use specific PHP version (available: 5, 7)
 
 ## Default configurations
 
