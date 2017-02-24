@@ -54,7 +54,7 @@ php7|C:\tools\php71
 - `-init`: Initialize AMPP project in the current directory
 - `-create`: Create a project directory with name specified by `-name` parameter and initialize AMPP project inside
 - `-name <name>`: Used with `-create` option
-- `-port <port>`: Run Apache on specified port, MariaDB will run on the port increased by 1
+- `-port <port>`: Run Apache on specified port (default 8000), MariaDB will run on the port increased by 1
 - `-phpVersion <version>`: Use specific PHP version (available: 5, 7)
 
 ## Default configurations
