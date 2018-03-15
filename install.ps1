@@ -2,6 +2,9 @@ param(
 	[string] $installDir = (Join-Path $env:LOCALAPPDATA "ampp")
 )
 
+# use TLS 1.2 for web requests (required by github.com)
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 $url = "https://github.com/uiii/ampp/archive/master.zip"
 $versionUrl = "https://raw.githubusercontent.com/uiii/ampp/master/.version"
 
