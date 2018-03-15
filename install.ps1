@@ -44,6 +44,7 @@ $extractDir = $tmpFile.FullName + ".extract"
 
 # download zip
 $tmpFile.MoveTo($zipFile)
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 Invoke-WebRequest -Uri $url -OutFile $zipFile
 
 # extract
